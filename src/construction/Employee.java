@@ -28,7 +28,7 @@ class Employee {
                     break;
                 case 3:
                      em.viewEmployee();
-                    em.updateEmployee();
+                    updateEmployee();
                      em.viewEmployee();
                     break;
                 case 4:
@@ -48,6 +48,8 @@ class Employee {
      public void addEmployee() {
         Scanner sc = new Scanner(System.in);
         config conf = new config();
+        System.out.println(" ID:");
+        String  id = sc.next();
         System.out.print("Employee First Name: ");
         String fname = sc.next();
         System.out.print("Employee Last Name: ");
@@ -59,8 +61,8 @@ class Employee {
         System.out.print("Employee Status: ");
         String status = sc.next();
 
-        String qry = "INSERT INTO tbl_employee(e_fname, e_lname, e_email, e_address, e_status) VALUES (?, ?, ?, ?, ?)";
-        conf.addRecord(qry, fname, lname, email, address, status);
+        String qry = "INSERT INTO tbl_employee(e_id,e_fname, e_lname, e_email, e_address, e_status) VALUES (?, ?, ?, ?, ?,?)";
+        conf.addRecord(qry,id, fname, lname, email, address, status);
     }
 
     public void viewEmployee() {

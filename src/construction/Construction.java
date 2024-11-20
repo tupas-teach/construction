@@ -48,7 +48,9 @@ public class Construction {
                     break;
             }
         } while (exit); 
+        System.out.println("----------------------------------------");
         System.out.println("Welcome to Construction from Tupas");
+        System.out.println("------------------------------------------");
     
     }
 }

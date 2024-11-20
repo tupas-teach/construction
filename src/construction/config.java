@@ -11,7 +11,7 @@ public static Connection connectDB() {
         Connection con = null;
         try {
             Class.forName("org.sqlite.JDBC"); // Load the SQLite JDBC driver
-            con = DriverManager.getConnection("jdbc:sqlite:dave.db"); // Establish connection
+            con = DriverManager.getConnection("jdbc:sqlite:construction.db"); // Establish connection
             System.out.println("Connection Successful");
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("Connection Failed: " + e);
@@ -69,7 +69,7 @@ public void addRecord(String sql, Object... values) {
             return;
         }
 
-        try (Connection conn = this.connectDB();
+        try (Connection conn = config.connectDB();
              PreparedStatement pstmt = conn.prepareStatement(sqlQuery);
              ResultSet rs = pstmt.executeQuery()) {
 
@@ -212,7 +212,7 @@ pstmt.executeUpdate();
         return result;
     }
 
-    int SingleValue(String select_e_id_FROM_tbl_employee_WHERE_e_id_, int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+     int SingleValue(String select_e_id_FROM_tbl_employee_WHERE_e_id_, int id) {
+        throw new UnsupportedOperationException("Yes supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

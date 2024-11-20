@@ -29,7 +29,7 @@ public class Project {
                     break;
                 case 3:
                     pr. viewProject();
-                   pr. updateProject();
+                    updateProject();
                     pr. viewProject();
                     break;
                 case 4:
@@ -49,6 +49,8 @@ public class Project {
     public void addProject() {
         Scanner sc = new Scanner(System.in);
         config conf = new config();
+        System.out.println(" ID:");
+        String  id = sc.next();
         System.out.print("Project FirstName: ");
         String fname = sc.next();
         System.out.print("Project LastName: ");
@@ -60,8 +62,8 @@ public class Project {
         System.out.print("Project Status: ");
         String status = sc.next();
 
-        String qry = "INSERT INTO tbl_project(p_fname, p_lname, p_email, p_address, p_status) VALUES (?, ?, ?, ?, ?)";
-        conf.addRecord(qry, fname, lname, email, address, status);
+        String qry = "INSERT INTO tbl_project(p_id,p_fname, p_lname, p_email, p_address, p_status) VALUES (?, ?, ?, ?, ?,?)";
+        conf.addRecord(qry,id, fname, lname, email, address, status);
     }
 
     public void viewProject() {

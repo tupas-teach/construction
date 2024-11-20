@@ -29,7 +29,7 @@ class Permit {
                     break;
                 case 3:
                     pr.viewPermit();
-                    pr.updatePermit();
+                    updatePermit();
                     pr.viewPermit();
                     break;
                 case 4:
@@ -49,6 +49,8 @@ class Permit {
      public void addPermit() {
         Scanner sc = new Scanner(System.in);
         config conf = new config();
+        System.out.println(" ID:");
+        String  id = sc.next();
         System.out.print("Permit First Name: ");
         String fname = sc.next();
         System.out.print("Permit stock: ");
@@ -60,8 +62,8 @@ class Permit {
         System.out.print("Permit Status: ");
         String status = sc.next();
 
-        String qry = "INSERT INTO tbl_permit(p_fname, p_lname, p_email, p_address, p_status) VALUES (?, ?, ?, ?, ?)";
-        conf.addRecord(qry, fname, stock, email, address, status);
+        String qry = "INSERT INTO tbl_permit(p_id, p_fname, p_lname, p_email, p_address, p_status) VALUES (?, ?, ?, ?, ?,?)";
+        conf.addRecord(qry,id, fname, stock, email, address, status);
     }
 
     public void viewPermit() {
@@ -86,7 +88,7 @@ class Permit {
 
         System.out.print("New Permit First Name: ");
         String fname = sc.next();
-        System.out.print("New Permit Last Name: ");
+        System.out.print("New Permit Stock: ");
         String lname = sc.next();
         System.out.print("New Permit Email: ");
         String email = sc.next();
@@ -95,7 +97,7 @@ class Permit {
         System.out.print("New Permit Status: ");
         String status = sc.next();
 
-        String qry = "UPDATE tbl_permit SET b_fname = ?, p_lname = ?, p_email = ?, p_address = ?, p_status = ? WHERE p_id = ?";
+        String qry = "UPDATE tbl_permit SET  p_fname = ?, p_stock = ?, p_email = ?, p_address = ?, p_status = ? WHERE p_id = ?";
         conf.updateRecord(qry, fname, lname, email, address, status, id);
     }
 

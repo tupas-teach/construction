@@ -26,7 +26,9 @@ public class Budget {
                     bud.viewBudget();
                     break;
                 case 3:
-                    bud.updateBudget();
+                     bud.viewBudget();
+                    updateBudget();
+                     bud.viewBudget();
                     break;
                 case 4:
                     bud.deleteBudget();
@@ -43,10 +45,12 @@ public class Budget {
      public void addBudget() {
         Scanner sc = new Scanner(System.in);
         config conf = new config();
+        System.out.println(" ID:");
+        String  id = sc.next();
         System.out.print("Budget First Name: ");
         String fname = sc.next();
-        System.out.print("Budget Last Name: ");
-        String lname = sc.next();
+        System.out.print("Budget Quantity: ");
+        String quantity = sc.next();
         System.out.print("Budget Email: ");
         String email = sc.next();
         System.out.print("Budget Address: ");
@@ -54,15 +58,15 @@ public class Budget {
         System.out.print("Budget Status: ");
         String status = sc.next();
 
-        String qry = "INSERT INTO tbl_budget(b_fname, b_lname, b_email, b_address, b_status) VALUES (?, ?, ?, ?, ?)";
-        conf.addRecord(qry, fname, lname, email, address, status);
+        String qry = "INSERT INTO tbl_budget(b_id,b_fname, b_quantity, b_email, b_address, b_status) VALUES (?, ?, ?, ?, ?,?)";
+        conf.addRecord(qry,id, fname, quantity, email, address, status);
     }
 
     public void viewBudget() {
         config conf = new config();
         String qry = "SELECT * FROM tbl_employee";
-        String[] hrds = {"ID", "First Name", "Last Name", "Email", "Address", "Status"};
-        String[] clmn = {"id", "fname", "lname", "email", "address", "status"};
+        String[] hrds = {"ID", "First Name", "Qyantity", "Email", "Address", "Status"};
+        String[] clmn = {"id", "fname", "quantity", "email", "address", "status"};
         conf.viewRecords(qry, hrds, clmn);
     }
 
@@ -77,8 +81,8 @@ public class Budget {
         }
             System.out.print("Selected ID doesn't exist! Enter ID again: ");
             id = sc.nextInt();
-        
-
+            
+       
         System.out.print("New Budget First Name: ");
         String fname = sc.next();
         System.out.print("New Budget Last Name: ");
@@ -90,7 +94,7 @@ public class Budget {
         System.out.print("New Budget Status: ");
         String status = sc.next();
 
-        String qry = "UPDATE tbl_employee SET b_fname = ?, b_lname = ?, b_email = ?, b_address = ?, b_status = ? WHERE b_id = ?";
+        String qry = "UPDATE tbl_employee SET b_id = ?,b_fname = ?, b_lname = ?, b_email = ?, b_address = ?, b_status = ? WHERE b_id = ?";
         conf.updateRecord(qry, fname, lname, email, address, status, id);
     }
 
